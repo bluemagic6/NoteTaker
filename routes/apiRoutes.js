@@ -1,5 +1,8 @@
 const fs = require("fs");
 const path = require('path');
+const express = require('express');
+const app = express();
+
 
 app.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, "./db/db.json"));
