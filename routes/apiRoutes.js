@@ -1,17 +1,16 @@
 const fs = require("fs");
 const path = require('path');
-// const express = require('express');
-const router = require("./htmlRoutes");
+const router = require('express').Router();
 
 const uuid = require('uuid');
 
 
-router.get('/api/notes', (req, res) => {
+router.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, "../db/db.json"));
 });
 
 // Add new Note
-router.post('./api/notes', (req, res) => {
+router.post('/notes', (req, res) => {
     const notes = JSON.parse(fs.readFileSync("../db/db.json"));
 
     const newNotes = req.body
@@ -23,3 +22,5 @@ router.post('./api/notes', (req, res) => {
 
     res.json(notes);
 });
+
+module.exports= router
